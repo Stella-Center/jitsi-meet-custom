@@ -6,7 +6,7 @@ RUN apt-get update && apt-get -y install --reinstall build-essential && apt-get 
 
 COPY . /usr/share/jitsi-meet
 
-RUN cd /usr/share/jitsi-meet && npm install && make compile
+RUN cd /usr/share/jitsi-meet && npm install && make
 
 EXPOSE 80 443
 
