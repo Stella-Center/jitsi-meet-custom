@@ -4,9 +4,9 @@ USER root
 
 RUN apt-get update && apt-get -y install --reinstall build-essential && apt-get -y install curl gnupg git && curl -sL https://deb.nodesource.com/setup_lts.x | bash - && apt-get -y install nodejs
 
-COPY . /usr/share/jitsi-meet
+COPY ./jitsi-meet-custom /usr/share/jitsi-meet
 
-RUN cd /usr/share/jitsi-meet && npm install && make compile
+RUN cd /usr/share/jitsi-meet && npm install && make
 
 EXPOSE 80 443
 
