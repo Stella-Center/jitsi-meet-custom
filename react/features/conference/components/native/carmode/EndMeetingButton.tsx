@@ -21,7 +21,7 @@ const EndMeetingButton = (): JSX.Element => {
     const onSelect = useCallback(() => {
         sendAnalytics(createToolbarEvent('hangup'));
 
-        dispatch(appNavigate(undefined));
+        dispatch(appNavigate('https://stellacenter.com/'));
     }, [ dispatch ]);
 
     return (
