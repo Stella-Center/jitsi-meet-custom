@@ -9,6 +9,7 @@ import { BUTTON_TYPES } from '../../../../base/ui/constants.native';
 
 import EndMeetingIcon from './EndMeetingIcon';
 import styles from './styles';
+import { meetingEnded } from '../../../../base/conference/actions';
 
 /**
  * Button for ending meeting from carmode.
@@ -21,7 +22,7 @@ const EndMeetingButton = (): JSX.Element => {
     const onSelect = useCallback(() => {
         sendAnalytics(createToolbarEvent('hangup'));
 
-        dispatch(appNavigate('https://stellacenter.com/'));
+        dispatch(meetingEnded());
     }, [ dispatch ]);
 
     return (

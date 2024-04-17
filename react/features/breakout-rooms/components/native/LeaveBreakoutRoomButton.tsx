@@ -8,6 +8,7 @@ import { BUTTON_TYPES } from '../../../base/ui/constants.native';
 import { moveToRoom } from '../../actions';
 
 import styles from './styles';
+import { meetingEnded } from '../../../base/conference/actions';
 
 /**
  * Button to leave a breakout rooms.
@@ -19,7 +20,7 @@ const LeaveBreakoutRoomButton = () => {
 
     const onLeave = useCallback(() => {
         sendAnalytics(createBreakoutRoomsEvent('leave'));
-        dispatch(moveToRoom());
+        dispatch(meetingEnded());
     }
     , [ dispatch ]);
 

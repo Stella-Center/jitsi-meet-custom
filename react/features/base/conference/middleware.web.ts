@@ -19,6 +19,7 @@ import { TRIGGER_READY_TO_CLOSE_REASONS } from './constants';
 import logger from './logger';
 
 import './middleware.any';
+import { meetingEnded } from './actions';
 
 let screenLock: WakeLockSentinel | undefined;
 
@@ -119,7 +120,7 @@ MiddlewareRegistry.register(store => next => action => {
                 Object.values(TRIGGER_READY_TO_CLOSE_REASONS).indexOf(reason)
             ];
 
-            dispatch(hangup(true, i18next.t(titlekey) || reason));
+            dispatch(meetingEnded());
         }
 
         releaseScreenLock();

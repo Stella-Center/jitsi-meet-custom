@@ -69,7 +69,8 @@ import {
     SET_ROOM,
     SET_START_MUTED_POLICY,
     SET_START_REACTIONS_MUTED,
-    UPDATE_CONFERENCE_METADATA
+    UPDATE_CONFERENCE_METADATA,
+    MEETING_ENDED
 } from './actionTypes';
 import {
     AVATAR_URL_COMMAND,
@@ -680,7 +681,6 @@ export function endpointMessageReceived(participant: Object, data: Object) {
 export function endConference() {
     return async (dispatch: IStore['dispatch'], getState: IStore['getState']) => {
         const { conference } = getConferenceState(toState(getState));
-
         conference?.end();
     };
 }
@@ -1069,5 +1069,16 @@ export function redirect(vnode: string, focusJid: string, username: string) {
                     APP.conference.startConference([]);
                 }
             });
+    };
+}
+
+export function meetingEnded() {
+    return () => {
+        // Redirect to another website
+        window.location.href = 'https://stellacenter.com/';
+
+        return {
+            type: MEETING_ENDED
+        };
     };
 }
