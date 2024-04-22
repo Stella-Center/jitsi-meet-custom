@@ -1075,7 +1075,7 @@ export function redirect(vnode: string, focusJid: string, username: string) {
 export function meetingEnded() {
     return () => {
         // Redirect to another website
-        window.location.href = 'https://stellacenter.com/';
+        window.location.href = 'https://form.jotform.com/241095885965271';
 
         return {
             type: MEETING_ENDED
