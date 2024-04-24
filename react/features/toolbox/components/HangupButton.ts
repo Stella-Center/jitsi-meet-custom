@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { createToolbarEvent } from '../../analytics/AnalyticsEvents';
 import { sendAnalytics } from '../../analytics/functions';
-import { leaveConference } from '../../base/conference/actions';
+import { leaveConference, meetingEnded } from '../../base/conference/actions';
 import { translate } from '../../base/i18n/functions';
 import { IProps as AbstractButtonProps } from '../../base/toolbox/components/AbstractButton';
 import AbstractHangupButton from '../../base/toolbox/components/AbstractHangupButton';
@@ -31,7 +31,7 @@ class HangupButton extends AbstractHangupButton<AbstractButtonProps> {
 
         this._hangup = _.once(() => {
             sendAnalytics(createToolbarEvent('hangup'));
-            this.props.dispatch(leaveConference());
+            this.props.dispatch(meetingEnded());
         });
     }
 
@@ -43,7 +43,7 @@ class HangupButton extends AbstractHangupButton<AbstractButtonProps> {
      * @returns {void}
      */
     _doHangup() {
-        this._hangup();
+       this._hangup();
     }
 }
 
