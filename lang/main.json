@@ -262,7 +262,7 @@
         "Remove": "Remove",
         "Share": "Share",
         "Submit": "Submit",
-        "WaitForHostMsg": "The conference has not yet started because no moderators have yet arrived. If you'd like to become a moderator please log-in. Otherwise, please wait.",
+        "WaitForHostMsg": "Your Stella provider will be allowing you into your virtual session shortly. Once your provider has joined you will be prompted to enter your name and request entry into your virtual visit.",
         "WaitingForHostButton": "Wait for moderator",
         "WaitingForHostTitle": "Waiting for a moderator...",
         "Yes": "Yes",
