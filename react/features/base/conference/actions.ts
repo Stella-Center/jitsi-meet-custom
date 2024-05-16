@@ -26,7 +26,7 @@ import {
     participantSourcesUpdated,
     participantUpdated
 } from '../participants/actions';
-import { getNormalizedDisplayName } from '../participants/functions';
+import { getLocalParticipant, getNormalizedDisplayName } from '../participants/functions';
 import { IJitsiParticipant } from '../participants/types';
 import { toState } from '../redux/functions';
 import {
@@ -1074,8 +1074,18 @@ export function redirect(vnode: string, focusJid: string, username: string) {
 
 export function meetingEnded() {
     return () => {
-        // Redirect to another website
-        window.location.href = 'https://form.jotform.com/241095885965271';
+        const localParticipant = getLocalParticipant(APP.store.getState());
+        const isModerator = localParticipant?.role === 'moderator';
+        let redirectUrl = 'https://form.jotform.com/241095885965271';
+
+        // Append parameters if the user is a moderator
+        if (isModerator && localParticipant?.name) {
+            const moderatorName = encodeURIComponent(localParticipant.name);
+            redirectUrl += `?isModerator=true&name=${moderatorName}`;
+        }
+
+        // Redirect to the feedback form with or without parameters
+        window.location.href = redirectUrl;
 
         return {
             type: MEETING_ENDED
