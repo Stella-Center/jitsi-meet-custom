@@ -254,14 +254,6 @@ class LobbyScreen extends AbstractLobbyScreen<IProps> {
                     testId = 'toolbar.openChat'
                     type = 'primary' />
                 }
-                {_renderPassword && <Button
-                    className = 'lobby-button-margin'
-                    fullWidth = { true }
-                    labelKey = 'lobby.enterPasswordButton'
-                    onClick = { this._onSwitchToPasswordMode }
-                    testId = 'lobby.enterPasswordButton'
-                    type = 'secondary' />
-                }
             </>
         );
     }

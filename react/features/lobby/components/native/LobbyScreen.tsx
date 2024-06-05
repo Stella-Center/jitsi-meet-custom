@@ -237,15 +237,6 @@ class LobbyScreen extends AbstractLobbyScreen<IProps> {
                         style = { preJoinStyles.joinButton }
                         type = { BUTTON_TYPES.PRIMARY } />
                 }
-                {
-                    _renderPassword
-                    && <Button
-                        accessibilityLabel = 'lobby.enterPasswordButton'
-                        labelKey = 'lobby.enterPasswordButton'
-                        onClick = { this._onSwitchToPasswordMode }
-                        style = { preJoinStyles.joinButton }
-                        type = { BUTTON_TYPES.PRIMARY } />
-                }
             </View>
         );
     }
