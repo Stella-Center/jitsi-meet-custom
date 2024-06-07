@@ -27,7 +27,7 @@ import {
     participantUpdated
 } from '../participants/actions';
 import { getLocalParticipant, getNormalizedDisplayName } from '../participants/functions';
-import { IJitsiParticipant } from '../participants/types';
+import { IJitsiParticipant, IParticipant } from '../participants/types';
 import { toState } from '../redux/functions';
 import {
     destroyLocalTracks,
@@ -1074,14 +1074,26 @@ export function redirect(vnode: string, focusJid: string, username: string) {
 
 export function meetingEnded() {
     return () => {
-        const localParticipant = getLocalParticipant(APP.store.getState());
+        const state = APP.store.getState();
+        const localParticipant = getLocalParticipant(state);
+        const participants = state['features/base/participants'];
         const isModerator = localParticipant?.role === 'moderator';
         let redirectUrl = 'https://form.jotform.com/241095885965271';
 
-        // Append parameters if the user is a moderator
-        if (isModerator && localParticipant?.name) {
-            const moderatorName = encodeURIComponent(localParticipant.name);
-            redirectUrl += `?isModerator=true&name=${moderatorName}`;
+        if (isModerator) {
+            // Append parameters if the user is a moderator
+            if (localParticipant?.name) {
+                const moderatorName = encodeURIComponent(localParticipant.name);
+                redirectUrl += `?isModerator=true&name=${moderatorName}`;
+            }
+        } else {
+            // Find a moderator in the participant list
+            const remoteParticipants = participants.remote;
+            const moderator = Array.from(remoteParticipants.values() as Iterable<IParticipant>).find((participant: IParticipant) => participant.role === 'moderator');
+            if (moderator && moderator.name) {
+                const moderatorName = encodeURIComponent(moderator.name);
+                redirectUrl += `?isModerator=false&name=${moderatorName}`;
+            }
         }
 
         // Redirect to the feedback form with or without parameters
