@@ -1,6 +1,6 @@
 /* eslint-disable lines-around-comment */
 
-import debounce from 'lodash/debounce';
+import { debounce } from 'lodash-es';
 import { NativeEventEmitter, NativeModules } from 'react-native';
 import { AnyAction } from 'redux';
 
@@ -52,6 +52,7 @@ import { ITrack } from '../../base/tracks/types';
 import { CLOSE_CHAT, OPEN_CHAT } from '../../chat/actionTypes';
 import { closeChat, openChat, sendMessage, setPrivateMessageRecipient } from '../../chat/actions.native';
 import { setRequestingSubtitles } from '../../subtitles/actions.any';
+import { CUSTOM_OVERFLOW_MENU_BUTTON_PRESSED } from '../../toolbox/actionTypes';
 import { muteLocal } from '../../video-menu/actions.native';
 import { ENTER_PICTURE_IN_PICTURE } from '../picture-in-picture/actionTypes';
 // @ts-ignore
@@ -181,6 +182,20 @@ externalAPIEnabled && MiddlewareRegistry.register(store => next => action => {
                     url: _normalizeUrl(locationURL)
                 });
         }
+
+        break;
+    }
+
+    case CUSTOM_OVERFLOW_MENU_BUTTON_PRESSED: {
+        const { id, text } = action;
+
+        sendEvent(
+            store,
+            CUSTOM_OVERFLOW_MENU_BUTTON_PRESSED,
+            {
+                id,
+                text
+            });
 
         break;
     }

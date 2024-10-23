@@ -18,6 +18,11 @@ interface IProps extends WithTranslation {
     _alternativeCancelText?: boolean;
 
     /**
+     * Whether to hide the login button.
+     */
+    _hideLoginButton?: boolean;
+
+    /**
      * Redux store dispatch method.
      */
     dispatch: IStore['dispatch'];
@@ -76,13 +81,15 @@ class WaitForOwnerDialog extends PureComponent<IProps> {
 
         return (
             <Dialog
-                cancel = {{hidden:true}}
+                cancel = {{ hidden: true }}
                 disableBackdropClose = { true }
                 hideCloseButton = { true }
-                ok =  {{hidden:true}}
+                ok = {{ hidden: true }}
+                onCancel = { this._onCancelWaitForOwner }
+                onSubmit = { this._onIAmHost }
                 titleKey = { t('dialog.WaitingForHostTitle') }>
                 <span>
-                    { t('dialog.WaitForHostMsg') }
+                    { this.props._hideLoginButton ? t('dialog.WaitForHostNoAuthMsg') : t('dialog.WaitForHostMsg') }
                 </span>
             </Dialog>
         );
@@ -99,9 +106,11 @@ class WaitForOwnerDialog extends PureComponent<IProps> {
  */
 function mapStateToProps(state: IReduxState) {
     const { membersOnly, lobbyWaitingForHost } = state['features/base/conference'];
+    const { hideLoginButton } = state['features/base/config'];
 
     return {
-        _alternativeCancelText: membersOnly && lobbyWaitingForHost
+        _alternativeCancelText: membersOnly && lobbyWaitingForHost,
+        _hideLoginButton: hideLoginButton
     };
 }
 
