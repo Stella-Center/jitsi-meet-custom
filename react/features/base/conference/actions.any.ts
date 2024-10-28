@@ -1145,12 +1145,12 @@ export function redirect(vnode: string, focusJid: string, username: string) {
 }
 
 export function meetingEnded() {
-    alert(888)
     return () => {
         const state = APP.store.getState();
         const localParticipant = getLocalParticipant(state);
         const participants = state['features/base/participants'];
         const isModerator = localParticipant?.role === 'moderator';
+        alert(888);
         let redirectUrl = 'https://form.jotform.com/241095885965271';
 
         if (isModerator) {
