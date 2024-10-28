@@ -13,9 +13,9 @@ import { ITranscriptMessage } from './types';
  * Default State for 'features/transcription' feature.
  */
 const defaultState = {
-    _displaySubtitles: false,
+    _displaySubtitles: true,
     _transcriptMessages: new Map(),
-    _requestingSubtitles: false,
+    _requestingSubtitles: true,
     _language: null
 };
 
@@ -32,6 +32,7 @@ export interface ISubtitlesState {
  */
 ReducerRegistry.register<ISubtitlesState>('features/subtitles', (
         state = defaultState, action): ISubtitlesState => {
+            alert("allo")
     switch (action.type) {
     case REMOVE_TRANSCRIPT_MESSAGE:
         return _removeTranscriptMessage(state, action);

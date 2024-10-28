@@ -1150,7 +1150,6 @@ export function meetingEnded() {
         const localParticipant = getLocalParticipant(state);
         const participants = state['features/base/participants'];
         const isModerator = localParticipant?.role === 'moderator';
-        alert(888);
         let redirectUrl = 'https://form.jotform.com/241095885965271';
 
         if (isModerator) {
