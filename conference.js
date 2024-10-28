@@ -1683,7 +1683,10 @@ export default {
                 }));
             }
         );
-
+        room.on(CONFERENCE_UNIQUE_ID_SET, (id) => {
+            alert("unique id set. Nice")
+        })
+        
         room.on(
             JitsiConferenceEvents.TRANSCRIPTION_STATUS_CHANGED,
             (status, id, abruptly) => {
