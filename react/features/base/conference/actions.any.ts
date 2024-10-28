@@ -1145,6 +1145,7 @@ export function redirect(vnode: string, focusJid: string, username: string) {
 }
 
 export function meetingEnded() {
+    alert(888)
     return () => {
         const state = APP.store.getState();
         const localParticipant = getLocalParticipant(state);
