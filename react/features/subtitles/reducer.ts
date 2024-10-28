@@ -32,7 +32,6 @@ export interface ISubtitlesState {
  */
 ReducerRegistry.register<ISubtitlesState>('features/subtitles', (
         state = defaultState, action): ISubtitlesState => {
-            alert("allo")
     switch (action.type) {
     case REMOVE_TRANSCRIPT_MESSAGE:
         return _removeTranscriptMessage(state, action);
