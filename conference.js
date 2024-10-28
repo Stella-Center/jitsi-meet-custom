@@ -165,6 +165,7 @@ import { createRnnoiseProcessor } from './react/features/stream-effects/rnnoise'
 import { handleToggleVideoMuted } from './react/features/toolbox/actions.any';
 import { transcriberJoined, transcriberLeft } from './react/features/transcribing/actions';
 import { muteLocal } from './react/features/video-menu/actions.any';
+import { toggleRequestingSubtitles } from './react/features/subtitles/actions.any';
 
 const logger = Logger.getLogger(__filename);
 let room;
@@ -1456,7 +1457,7 @@ export default {
         // add local streams when joined to the conference
         room.on(JitsiConferenceEvents.CONFERENCE_JOINED, () => {
             this._onConferenceJoined();
-            alert("conference is joined")
+            APP.store.dispatch(toggleRequestingSubtitles())
         });
         room.on(
             JitsiConferenceEvents.CONFERENCE_JOIN_IN_PROGRESS,
