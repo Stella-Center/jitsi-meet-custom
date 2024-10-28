@@ -52,6 +52,7 @@ export function updateTranscriptMessage(transcriptMessageID: string,
  * }}
  */
 export function toggleRequestingSubtitles() {
+    alert(4)
     return {
         type: TOGGLE_REQUESTING_SUBTITLES
     };

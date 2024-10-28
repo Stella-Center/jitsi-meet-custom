@@ -487,7 +487,6 @@ function initCommands() {
         },
         'toggle-subtitles': () => {
             APP.store.dispatch(toggleRequestingSubtitles());
-            alert(5)
         },
         'set-subtitles': (enabled, displaySubtitles, language) => {
             APP.store.dispatch(setRequestingSubtitles(enabled, displaySubtitles, language));
