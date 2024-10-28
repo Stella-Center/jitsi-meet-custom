@@ -13,9 +13,9 @@ import { ITranscriptMessage } from './types';
  * Default State for 'features/transcription' feature.
  */
 const defaultState = {
-    _displaySubtitles: false,
+    _displaySubtitles: true,
     _transcriptMessages: new Map(),
-    _requestingSubtitles: false,
+    _requestingSubtitles: true,
     _language: null
 };
 
