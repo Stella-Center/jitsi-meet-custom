@@ -84,6 +84,8 @@ MiddlewareRegistry.register(store => next => action => {
     case TRANSCRIBER_JOINED: {
         const { transcription } = store.getState()['features/base/config'];
 
+        alert("Transcriber joined")
+
         if (transcription?.autoCaptionOnTranscribe) {
             store.dispatch(setRequestingSubtitles(true));
         }
