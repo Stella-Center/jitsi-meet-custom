@@ -548,7 +548,7 @@ export default {
             }, NOTIFICATION_TIMEOUT_TYPE.LONG));
         }
 
-        APP.store.dispatch(toggleRequestingSubtitles());
+        //APP.store.dispatch(toggleRequestingSubtitles());
 
         // XXX The API will take care of disconnecting from the XMPP
         // server (and, thus, leaving the room) on unload.
