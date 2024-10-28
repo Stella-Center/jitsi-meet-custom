@@ -549,7 +549,6 @@ export default {
         }
 
         APP.store.dispatch(toggleRequestingSubtitles());
-        alert("Nice")
 
         // XXX The API will take care of disconnecting from the XMPP
         // server (and, thus, leaving the room) on unload.
