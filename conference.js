@@ -2029,7 +2029,7 @@ export default {
             APP.store.dispatch(toggleRequestingSubtitles());
         }, 1000); // Adjust delay as needed
         
-        APP.store.dispatch(setRequestingSubtitles(true, true, 'en-US'))
+        APP.store.dispatch(setRequestingSubtitles(true, true, 'English'))
         console.log('After toggling subtitles:', APP.store.getState());
         alert(909)
     },
