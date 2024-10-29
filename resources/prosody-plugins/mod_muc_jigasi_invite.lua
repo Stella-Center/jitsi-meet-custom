@@ -167,7 +167,7 @@ module:depends("http");
 module:provides("http", {
     default_path = "/";
     route = {
-        ["POST invite-jigasi"] = function(event)
+        ["POST invite-jigasi2"] = function(event)
             return async_handler_wrapper(event, handle_jigasi_invite)
         end;
     };
