@@ -165,6 +165,7 @@ import { createRnnoiseProcessor } from './react/features/stream-effects/rnnoise'
 import { handleToggleVideoMuted } from './react/features/toolbox/actions.any';
 import { transcriberJoined, transcriberLeft } from './react/features/transcribing/actions';
 import { muteLocal } from './react/features/video-menu/actions.any';
+import { toggleRequestingSubtitles } from './react/features/subtitles/actions.any';
 
 const logger = Logger.getLogger(__filename);
 let room;
@@ -2023,7 +2024,7 @@ export default {
             dispatch(setAudioUnmutePermissions(true, true));
             dispatch(setVideoUnmutePermissions(true, true));
         }
-        alert(666)
+        APP.store.dispatch(toggleRequestingSubtitles());
     },
 
     /**
