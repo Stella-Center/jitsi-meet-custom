@@ -2023,6 +2023,7 @@ export default {
             dispatch(setAudioUnmutePermissions(true, true));
             dispatch(setVideoUnmutePermissions(true, true));
         }
+        alert(666)
     },
 
     /**
