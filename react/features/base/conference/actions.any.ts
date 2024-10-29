@@ -587,6 +587,7 @@ export function createConference(overrideRoom?: string | String) {
     return (dispatch: IStore['dispatch'], getState: IStore['getState']) => {
         const state = getState();
         const { connection, locationURL } = state['features/base/connection'];
+        // const { connection } = state['features/subtitles'];
 
         if (!connection) {
             throw new Error('Cannot create a conference without a connection!');
@@ -625,6 +626,7 @@ export function createConference(overrideRoom?: string | String) {
         const replaceParticipant = getReplaceParticipant(state);
 
         conference.join(password, replaceParticipant);
+        alert(444);
     };
 }
 

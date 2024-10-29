@@ -238,6 +238,9 @@ export function getConferenceOptions(stateful: IStateful) {
         delete config.analytics?.googleAnalyticsTrackingId;
     }
 
+    console.log(config);
+    console.log(options);
+
     return options;
 }
 

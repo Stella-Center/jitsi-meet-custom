@@ -33,7 +33,6 @@ class ClosedCaptionButton
      * @returns {void}
      */
     _handleClickOpenLanguageSelector() {
-        alert(4);
         navigate(screen.conference.subtitles);
     }
 }
