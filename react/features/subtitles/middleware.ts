@@ -275,6 +275,7 @@ function _requestingSubtitlesChange(
     }
 
     if (enabled && language) {
+        alert(8989)
         conference?.setLocalParticipantProperty(
             P_NAME_TRANSLATION_LANGUAGE,
             language.replace('translation-languages:', ''));
