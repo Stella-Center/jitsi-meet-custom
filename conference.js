@@ -1457,6 +1457,7 @@ export default {
         // add local streams when joined to the conference
         room.on(JitsiConferenceEvents.CONFERENCE_JOINED, () => {
             this._onConferenceJoined();
+            alert("conference is joined")
             APP.store.dispatch(toggleRequestingSubtitles())
         });
         room.on(
