@@ -558,6 +558,7 @@ export function sendLocalParticipant(
         conference?.setLocalParticipantProperty('features_screen-sharing', true);
     }
 
+    alert(777);
     conference?.setDisplayName(name);
 }
 
