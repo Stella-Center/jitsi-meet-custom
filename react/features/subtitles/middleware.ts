@@ -1,7 +1,7 @@
 import { AnyAction } from 'redux';
 
 import { IStore } from '../app/types';
-import { CONFERENCE_WILL_INIT, ENDPOINT_MESSAGE_RECEIVED } from '../base/conference/actionTypes';
+import { ENDPOINT_MESSAGE_RECEIVED } from '../base/conference/actionTypes';
 import { isJwtFeatureEnabled } from '../base/jwt/functions';
 import JitsiMeetJS from '../base/lib-jitsi-meet';
 import { isLocalParticipantModerator } from '../base/participants/functions';
@@ -71,8 +71,6 @@ const STABLE_TRANSCRIPTION_FACTOR = 0.85;
  */
 MiddlewareRegistry.register(store => next => action => {
     switch (action.type) {
-    case CONFERENCE_WILL_INIT:
-        alert("Conference will init")
     case ENDPOINT_MESSAGE_RECEIVED:
         return _endpointMessageReceived(store, next, action);
 
