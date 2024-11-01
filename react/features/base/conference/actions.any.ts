@@ -626,7 +626,6 @@ export function createConference(overrideRoom?: string | String) {
         const replaceParticipant = getReplaceParticipant(state);
 
         conference.join(password, replaceParticipant);
-        alert(444);
     };
 }
 

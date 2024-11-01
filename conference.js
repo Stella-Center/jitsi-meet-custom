@@ -2024,14 +2024,7 @@ export default {
             dispatch(setAudioUnmutePermissions(true, true));
             dispatch(setVideoUnmutePermissions(true, true));
         }
-        console.log('Before toggling subtitles:', APP.store.getState());
-        setTimeout(() => {
-            APP.store.dispatch(toggleRequestingSubtitles());
-        }, 1000); // Adjust delay as needed
         
-        APP.store.dispatch(setRequestingSubtitles(true, true, null))
-        console.log('After toggling subtitles:', APP.store.getState());
-        alert(909)
     },
 
     /**

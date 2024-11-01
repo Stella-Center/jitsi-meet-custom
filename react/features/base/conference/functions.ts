@@ -560,7 +560,6 @@ export function sendLocalParticipant(
 
     conference?.setLocalParticipantProperty('features_jigasi', true);
 
-    alert(777);
     conference?.setDisplayName(name);
 }
 
