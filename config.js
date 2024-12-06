@@ -84,10 +84,6 @@ var config = {
         // Allows the setting of a custom bandwidth value from the UI.
         // assumeBandwidth: true,
 
-        // Disables the End to End Encryption feature. Useful for debugging
-        // issues related to insertable streams.
-        // disableE2EE: false,
-
         // Enables the use of the codec selection API supported by the browsers .
         // enableCodecSelectionAPI: false,
 
@@ -213,14 +209,45 @@ var config = {
     // installation. Specifically, these files are needed:
     //   - https://meet.example.com/libs/krisp/krisp.mjs
     //   - https://meet.example.com/libs/krisp/models/model_8.kw
-    //   - https://meet.example.com/libs/krisp/models/model_16.kw
-    //   - https://meet.example.com/libs/krisp/models/model_32.kw
-    // NOTE: Krisp JS SDK v1.0.9 was tested.
+    //   - https://meet.example.com/libs/krisp/models/model_nc.kw
+    //   - https://meet.example.com/libs/krisp/models/model_bvc.kw
+    //   - https://meet.example.com/libs/krisp/assets/bvc-allowed.txt
+    //     In case when you have known BVC supported devices and you want to extend allowed devices list
+    //   - https://meet.example.com/libs/krisp/assets/bvc-allowed-ext.txt
+    //     In case when you have known BVC supported devices and you want to extend allowed devices list
+    //   - https://meet.example.com/libs/krisp/models/model_inbound_8.kw
+    //   - https://meet.example.com/libs/krisp/models/model_inbound_16.kw
+    //     In case when you want to use inbound noise suppression models
+    // NOTE: Krisp JS SDK v2.0.0 was tested.
     // noiseSuppression: {
     //     krisp: {
     //         enabled: false,
     //         logProcessStats: false,
     //         debugLogs: false,
+    //         useBVC: false,
+    //         bufferOverflowMS: 1000,
+    //         inboundModels: {
+    //             modelInbound8: 'model_inbound_8.kef',
+    //             modelInbound16: 'model_inbound_16.kef',
+    //         },
+    //         preloadInboundModels: {
+    //             modelInbound8: 'model_inbound_8.kef',
+    //             modelInbound16: 'model_inbound_16.kef',
+    //         },
+    //         preloadModels: {
+    //             modelBVC: 'model_bvc.kef',
+    //             model8: 'model_8.kef',
+    //             modelNC: 'model_nc_mq.kef',
+    //         },
+    //         models: {
+    //             modelBVC: 'model_bvc.kef',
+    //             model8: 'model_8.kef',
+    //             modelNV: 'model_nc_mq.kef',
+    //         },
+    //         bvc: {
+    //             allowedDevices: 'bvc-allowed.txt',
+    //             allowedDevicesExt: 'bvc-allowed-ext.txt',
+    //         }
     //     },
     // },
 
@@ -358,6 +385,8 @@ var config = {
     //    // If true, shows a warning label in the prejoin screen to point out the possibility that
     //    // the call you're joining might be recorded.
     //    // showPrejoinWarning: true,
+    //    // If true, the notification for recording start will display a link to download the cloud recording.
+    //    // showRecordingLink: true,
     // },
 
     // recordingService: {
@@ -1227,6 +1256,7 @@ var config = {
     //     warning: '',
     //   },
     //   externallyManagedKey: false,
+    //   disabled: false,
     // },
 
     // Options related to end-to-end (participant to participant) ping.
@@ -1601,7 +1631,6 @@ var config = {
      iAmRecorder
      iAmSipGateway
      microsoftApiApplicationClientID
-     requireDisplayName
      */
 
     /**

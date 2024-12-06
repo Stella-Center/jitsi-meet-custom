@@ -150,12 +150,15 @@ MiddlewareRegistry.register(store => next => action => {
         break;
     }
     case CONNECTION_ESTABLISHED: {
-        if (isPrejoinPageVisible(getState())) {
-            let { initialGUMPromise } = getState()['features/base/media'];
+        const { initialGUMPromise } = getState()['features/base/media'];
+        const promise = initialGUMPromise ? initialGUMPromise.promise : Promise.resolve({ tracks: [] });
+        const prejoinVisible = isPrejoinPageVisible(getState());
 
-            initialGUMPromise = initialGUMPromise || Promise.resolve({ tracks: [] });
+        logger.debug(`On connection established: prejoinVisible: ${prejoinVisible}, initialGUMPromiseExists=${
+            Boolean(initialGUMPromise)}, promiseExists=${Boolean(promise)}`);
 
-            initialGUMPromise.then(() => {
+        if (prejoinVisible) {
+            promise.then(() => {
                 const state = getState();
                 let localTracks = getLocalTracks(state['features/base/tracks']);
                 const trackReplacePromises = [];
@@ -187,11 +190,7 @@ MiddlewareRegistry.register(store => next => action => {
                 });
             });
         } else {
-            let { initialGUMPromise } = getState()['features/base/media'];
-
-            initialGUMPromise = initialGUMPromise || Promise.resolve({ tracks: [] });
-
-            initialGUMPromise.then(({ tracks }) => {
+            promise.then(({ tracks }) => {
                 let tracksToUse = tracks ?? [];
 
                 if (iAmVisitor(getState())) {

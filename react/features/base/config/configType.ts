@@ -124,11 +124,27 @@ export interface IDeeplinkingConfig {
     ios?: IDeeplinkingMobileConfig;
 }
 
+export type PartialRecord<K extends keyof any, T> = {
+    [P in K]?: T;
+};
+
 export interface INoiseSuppressionConfig {
     krisp?: {
-        debugLogs?: boolean;
-        enabled?: boolean;
+        bufferOverflowMS?: number;
+        bvc?: {
+            allowedDevices?: string;
+            allowedDevicesExt?: string;
+        };
+        debugLogs: boolean;
+        enableSessionStats?: boolean;
+        enabled: boolean;
+        inboundModels?: PartialRecord<string, string>;
         logProcessStats?: boolean;
+        models?: PartialRecord<string, string>;
+        preloadInboundModels?: PartialRecord<string, string>;
+        preloadModels?: PartialRecord<string, string>;
+        useBVC?: boolean;
+        useSharedArrayBuffer?: boolean;
     };
 }
 
@@ -308,6 +324,7 @@ export interface IConfig {
     };
     dynamicBrandingUrl?: string;
     e2ee?: {
+        disabled?: boolean;
         externallyManagedKey?: boolean;
         labels?: {
             description?: string;
@@ -509,6 +526,7 @@ export interface IConfig {
     recordings?: {
         recordAudioAndVideo?: boolean;
         showPrejoinWarning?: boolean;
+        showRecordingLink?: boolean;
         suggestRecording?: boolean;
     };
     remoteVideoMenu?: {
@@ -552,7 +570,6 @@ export interface IConfig {
     subject?: string;
     testing?: {
         assumeBandwidth?: boolean;
-        disableE2EE?: boolean;
         dumpTranscript?: boolean;
         noAutoPlayVideo?: boolean;
         p2pTestMode?: boolean;
